@@ -1,0 +1,11 @@
+C:\Users\Pait\source\repos\DoomGame\DoomGame\obj\Debug\DoomGame.csproj.AssemblyReference.cache
+C:\Users\Pait\source\repos\DoomGame\DoomGame\obj\Debug\DoomGame.csproj.SuggestedBindingRedirects.cache
+C:\Users\Pait\source\repos\DoomGame\DoomGame\obj\Debug\DoomGame.csproj.GenerateResource.cache
+C:\Users\Pait\source\repos\DoomGame\DoomGame\obj\Debug\DoomGame.csproj.CoreCompileInputs.cache
+C:\Users\Pait\source\repos\DoomGame\DoomGame\obj\Debug\Form1.resources
+C:\Users\Pait\source\repos\DoomGame\DoomGame\bin\Debug\DoomGame.exe.config
+C:\Users\Pait\source\repos\DoomGame\DoomGame\bin\Debug\DoomGame.exe
+C:\Users\Pait\source\repos\DoomGame\DoomGame\bin\Debug\DoomGame.pdb
+C:\Users\Pait\source\repos\DoomGame\DoomGame\obj\Debug\DoomGame.Properties.Resources.resources
+C:\Users\Pait\source\repos\DoomGame\DoomGame\obj\Debug\DoomGame.exe
+C:\Users\Pait\source\repos\DoomGame\DoomGame\obj\Debug\DoomGame.pdb
