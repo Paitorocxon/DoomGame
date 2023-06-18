@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 public class Form1 : Form
 {
-    private const int screenWidth = 800;
-    private const int screenHeight = 600;
+    private const int screenWidth = 1024;
+    private const int screenHeight = 768;
     private const float playerMoveSpeed = 0.1f;
     private const float playerRotationSpeed = 0.05f;
 
@@ -17,6 +17,21 @@ public class Form1 : Form
     private float playerAngle = 0f;
 
     private bool[] keyStates;
+
+    // Array für die Welt
+    private int[,] worldMap = new int[,]
+    {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    };
 
     public Form1()
     {
@@ -72,14 +87,14 @@ public class Form1 : Form
             float distanceToWall = 0f;
             bool hitWall = false;
 
-            while (!hitWall && distanceToWall < 20f)
+            while (!hitWall && distanceToWall < 50f)
             {
                 distanceToWall += 0.1f;
                 int testX = (int)(playerX + rayX * distanceToWall);
                 int testY = (int)(playerY + rayY * distanceToWall);
 
                 // Kollisionsabfrage
-                if (testX < 0 || testX >= 5 || testY < 0 || testY >= 5)
+                if (testX < 0 || testX >= worldMap.GetLength(1) || testY < 0 || testY >= worldMap.GetLength(0) || worldMap[testY, testX] == 1)
                 {
                     hitWall = true;
                 }
@@ -98,7 +113,7 @@ public class Form1 : Form
         }
 
         // Rendern des Spielers
-        int playerSize = 3;
+        int playerSize = 2;
         int playerScreenX = (int)((screenWidth - playerSize) / 2f);
         int playerScreenY = (int)((screenHeight - playerSize) / 2f);
         screenGraphics.FillEllipse(Brushes.Red, playerScreenX, playerScreenY, playerSize, playerSize);
@@ -143,7 +158,7 @@ public class Form1 : Form
         float newY = playerY + (float)Math.Cos(playerAngle) * distance;
 
         // Kollisionsabfrage
-        if (newX >= 0 && newX < 5 && newY >= 0 && newY < 5)
+        if (newX >= 0 && newX < worldMap.GetLength(1) && newY >= 0 && newY < worldMap.GetLength(0) && worldMap[(int)newY, (int)newX] == 0)
         {
             playerX = newX;
             playerY = newY;
